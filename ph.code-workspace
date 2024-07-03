@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "PH",
+      "path": "d:\\proggen\\PyQGIS\\PlanHandler\\v0.1\\PlanHandler\\"
+    }
+  ],
+  "settings": {
+    "python.autoComplete.extraPaths": [
+      "c:\\OSGeo4W\\apps\\Python312\\",
+      "c:\\OSGeo4W\\apps\\qgis-ltr\\python\\",
+    ],
+    "python.analysis.extraPaths": [
+      "c:\\OSGeo4W\\apps\\Python312\\",
+      "c:\\OSGeo4W\\apps\\qgis-ltr\\python\\",
+    ],
+    "python.defaultInterpreterPath": "c:\\OSGeo4W\\apps\\Python312\\python3.exe",
+  }
+}

@@ -1,0 +1,9 @@
+[general]
+name=PlanHandler
+description=Create Planviews in QGIS' main window
+about=This plugin is intended to handle plan views in the QGIS Main Window, which will ultimately be used to create beautiful and responsive Layouts for export. 
+version=0.1
+qgisMinimumVersion=3.3
+author=Robert Schlich
+email=robert.schlich@gmx.de
+repository=
