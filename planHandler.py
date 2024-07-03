@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QAction
 from PyQt5.QtGui import QIcon
-import pathlib, os
+import os
 from qgis.core import Qgis
 
 from .layutils.layerHandler import LayerHandler
@@ -10,11 +10,12 @@ class PlanHandler:
   
     def __init__(self, iface):
         self.iface = iface
+        self.plugin_dir = os.path.dirname(__file__)
         self.layerHandler : LayerHandler
 
     def initGui(self):
-        icon = 'planhandler.svg'
-        iconPath = os.path.join(pathlib.Path(__file__).parent.resolve(), icon)  
+        icon = 'planHandler.svg'
+        iconPath = os.path.join(self.plugin_dir, icon)  
         self.action = QAction('Planhandler', self.iface.mainWindow())
         self.action.triggered.connect(self.run)
         self.action.setIcon(QIcon(iconPath))
