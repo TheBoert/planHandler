@@ -39,8 +39,8 @@ try
     Write-Host ""
     Write-Host $text -ForegroundColor DarkYellow
 
-    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "c:\Users\schlich\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\PlanHandler" /MIR /NP /XF *.code-workspace *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git"
-    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "h:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" /MIR /NP /XF *.code-workspace *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git"
+    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "c:\Users\schlich\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git"
+    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "h:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git"
   }
 
   # subscribe your event handler to all event types that are
