@@ -1,1 +1,2 @@
 # planHandler
+This is planHandler. A plugin used to link a polygon layer containing rectangles (called views) to layouts which should automatically be set up so that the layout displays exactly the area of the rectangle.
