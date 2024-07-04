@@ -10,13 +10,12 @@ $IncludeSubfolders = $true
 # specify the file or folder properties you want to monitor:
 $AttributeFilter = [IO.NotifyFilters]::FileName, [IO.NotifyFilters]::LastWrite 
 
-try
-{
+try {
   $watcher = New-Object -TypeName System.IO.FileSystemWatcher -Property @{
-    Path = $Path
-    Filter = $FileFilter
+    Path                  = $Path
+    Filter                = $FileFilter
     IncludeSubdirectories = $IncludeSubfolders
-    NotifyFilter = $AttributeFilter
+    NotifyFilter          = $AttributeFilter
   }
 
   # define the code that should execute when a change occurs:
@@ -39,8 +38,8 @@ try
     Write-Host ""
     Write-Host $text -ForegroundColor DarkYellow
 
-    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "c:\Users\schlich\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git"
-    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "h:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git"
+    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "c:\Users\schlich\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\tests"
+    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "h:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\tests"
   }
 
   # subscribe your event handler to all event types that are
@@ -61,8 +60,7 @@ try
   # since the FileSystemWatcher is no longer blocking PowerShell
   # we need a way to pause PowerShell while being responsive to
   # incoming events. Use an endless loop to keep PowerShell busy:
-  do
-  {
+  do {
     # Wait-Event waits for a second and stays responsive to events
     # Start-Sleep in contrast would NOT work and ignore incoming events
     Wait-Event -Timeout 1
@@ -72,8 +70,7 @@ try
         
   } while ($true)
 }
-finally
-{
+finally {
   # this gets executed when user presses CTRL+C:
   
   # stop monitoring
