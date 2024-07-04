@@ -1,20 +1,7 @@
 from qgis.core import QgsMapLayer, QgsWkbTypes
 
 from ..error.planHandlerErrors import *
-
-expectedFieldnames = [\
-    "seite_hoehe", 
-    "seite_breite", 
-    "seitenrand_oben",
-    "seitenrand_unten",
-    "seitenrand_links",
-    "seitenrand_rechts",
-    "breite_schriftfeld",
-    "massstab",
-    "ansicht_breite_welt",
-    "ansicht_hoehe_welt",
-    "winkel"
-]
+from .featureHandling import *
 
 def validateLayer(layer: QgsMapLayer):
     if not layer:
@@ -29,7 +16,7 @@ def validateLayer(layer: QgsMapLayer):
     
 def __missingOrInvalidFieldsInLayer(layer):
     missingFields = []
-    for expectedFieldName in expectedFieldnames:
+    for expectedFieldName in geometryFieldnames:
         field = __getLayerFieldByName(layer, expectedFieldName)
         # All fields should be of Type double (field.type() == 6)
         if field is None or field.type() != 6:
