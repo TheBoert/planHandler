@@ -32,18 +32,22 @@ class phPageLayout:
     width -- the page width in mm
     height -- the page height in mm
     xxxMargin -- the page margins (top, left, right, bottom) in mm
+    mapborder -- the width of the mapborder in mm (optional, default = 0)
     titleblockwidth -- the width of the titleblock in mm (optional, default = 0)
     """
     width: float
     height: float
-    titleblockwidth: float
     margins: phPageMargins
+    mapborder: float
+    titleblockwidth: float
 
     def __init__(self, width: float , height:float, pageMargins: phPageMargins, \
-                 titleblockwidth: float = 0):
+                 mapborder: float = 0, titleblockwidth: float = 0):
         self.margins = pageMargins
         if width < 0 or height < 0:
             raise ValueError("Seite kann keine negativen Abmessungen haben!")
+        if mapborder < 0:
+            raise ValueError("Kartenrahmen kann keine negative Breite haben!")
         if titleblockwidth < 0:
             raise ValueError("Schriftfeld kann keine negative Breite haben!")
         if self.margins.left + titleblockwidth + self.margins.right > width:
@@ -55,23 +59,25 @@ class phPageLayout:
                              nicht größer als die Höhe der Seite sein.")
         self.width = width
         self.height = height
+        self.mapborder = mapborder
         self.titleblockwidth = titleblockwidth
+        print(self.mapborder)
 
     @property
     def pageViewWidth(self):
         """
         The width of the resulting view of the page layout in mm.
         """
-    
         return self.width - self.margins.left - self.margins.right - \
-            self.titleblockwidth
+            self.mapborder * 2 - self.titleblockwidth
     
     @property
     def pageViewHeight(self):
         """
         The height of the resulting view of the page layout in mm.
         """
-        return self.height - self.margins.top - self.margins.bottom
+        return self.height - self.margins.top - self.margins.bottom - \
+            self.mapborder * 2 
     
 class phPlanLayout:
     """

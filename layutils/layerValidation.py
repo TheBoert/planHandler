@@ -16,7 +16,7 @@ def validateLayer(layer: QgsMapLayer):
     
 def __missingOrInvalidFieldsInLayer(layer):
     missingFields = []
-    for expectedFieldName in geometryFieldnames:
+    for expectedFieldName in mandatoryGeometryFieldnames:
         field = __getLayerFieldByName(layer, expectedFieldName)
         # All fields should be of Type double (field.type() == 6)
         if field is None or field.type() != 6:

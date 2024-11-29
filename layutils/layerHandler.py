@@ -1,7 +1,7 @@
 from qgis.core import *
 
 from .layerValidation import validateLayer
-from .featureHandling import featureHandling, geometryFieldnames
+from .featureHandling import featureHandling, mandatoryGeometryFieldnames, optionalGeometryFieldnames
 
 class LayerHandler:
 
@@ -18,9 +18,13 @@ class LayerHandler:
     # geänderten Features, die idx des geänderten Attributes und der neue Wert 
     # (value) des Attributes für das geänderte Feature übergeben.
     def handleAttributeChange(self, fid, idx, newValue):
-        attributeName = self.layer.fields().field(idx).name();
-        if attributeName in geometryFieldnames:
-            self.printGeometryChangedMessage(fid, attributeName, newValue)
+        geometryFieldnames = mandatoryGeometryFieldnames + \
+                             optionalGeometryFieldnames
+
+        changedAttributeName = self.layer.fields().field(idx).name();
+
+        if changedAttributeName in geometryFieldnames:
+            self.printGeometryChangedMessage(fid, changedAttributeName, newValue)
             feature = self.layer.getFeature(fid)
             newGeometry = featureHandling.createNewWorldViewGeometry(feature)
             self.layer.changeGeometry(fid, newGeometry)

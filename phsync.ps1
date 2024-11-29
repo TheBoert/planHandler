@@ -38,9 +38,15 @@ try {
     Write-Host ""
     Write-Host $text -ForegroundColor DarkYellow
 
-    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "c:\Users\schlich\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\tests"
-    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "h:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\tests"
+    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "c:\Users\schlich\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\tests" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.vscode"
+    robocopy "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" "h:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler" /MIR /NP /XF *.code-workspace *.md *.ps1 *.gitignore /XD "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.git" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\tests" "d:\proggen\PyQGIS\PlanHandler\v0.1\PlanHandler\.vscode"
   }
+
+  $robocopy {
+    # Assemble target Paths to which 
+    $targetPaths = New-Object Collections.Generic.List[str]
+    $targetPaths.add()
+   }
 
   # subscribe your event handler to all event types that are
   # important to you. Do this as a scriptblock so all returned
@@ -55,7 +61,7 @@ try {
   # monitoring starts now:
   $watcher.EnableRaisingEvents = $true
 
-  Write-Host "Watching for changes to $Path"
+  Write-Host "Watching for changes to $Path - to stop press CTRL+C"
 
   # since the FileSystemWatcher is no longer blocking PowerShell
   # we need a way to pause PowerShell while being responsive to
